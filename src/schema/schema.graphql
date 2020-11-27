@@ -8,6 +8,7 @@ type User {
   type Query {
     user(id: ID!): User
     users: [User]!
+    user_name(name:String!) : User
   }
 type Mutation {
     signup(
@@ -16,4 +17,13 @@ type Mutation {
     password: String!
     email: String!
     ): User
+    
+    updateUser(
+    id:ID!
+    name: String
+    password: String
+    email: String
+    ): User
+    
+    deleteUser(id:ID!): User
 }
