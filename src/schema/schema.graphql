@@ -1,29 +1,62 @@
 type User {
-    id: ID!
-    name: String!
-    username:String!
-    password: String!
-    email: String!
-  }
-  type Query {
-    user(id: ID!): User
-    users: [User]!
-    user_name(name:String!) : User
-  }
+  id: ID!
+  name: String!
+  username: String!
+  password: String!
+  email: String!
+
+  products: [Product] #<--- This is relationship
+}
+
+type AuthData {
+  user: User
+  jwt: String
+}
+
+type Product {
+  id: ID!
+  name: String!
+  discription: String
+  price: Float!
+
+  user: User! #<--- This is relationship
+}
+
+type Query {
+  user(id: ID!): User
+  users: [User]!
+  user_name(name: String!): User
+
+  products:[Product]!
+}
+
 type Mutation {
-    signup(
+  login(username:String!,password:String!):AuthData
+  
+  
+  signup(
     name: String!
-    username:String!
+    username: String!
     password: String!
     email: String!
-    ): User
-    
-    updateUser(
-    id:ID!
+  ): User
+
+  updateUser(id: ID!, name: String, password: String, email: String): User
+
+  deleteUser(id: ID!): User
+
+  createProduct(
+    name: String!
+    discription: String
+    price: Float!
+  ): Product
+
+  updateProduct(
+    id: ID!
     name: String
-    password: String
-    email: String
-    ): User
-    
-    deleteUser(id:ID!): User
+    discription: String
+    price: Float
+  ): Product
+
+  deleteProduct(id: ID!): Product
 }

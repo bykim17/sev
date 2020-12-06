@@ -8,12 +8,12 @@ const createServer = async () => {
     await mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASS}@cluster0.jeizr.mongodb.net/${process.env.MONGO_DB}?retryWrites=true&w=majority`,{useUnifiedTopology: true});
     
     const app = express();
-    const PORT = 8080;
+    const PORT = 9090;
     server.applyMiddleware({ app });
 
     app.listen({ port: PORT }, () =>
       console.log(
-        `🚀 Server ready at http://localhost:8080${server.graphqlPath}`
+        `🚀 Server ready at http://localhost:9090${server.graphqlPath}`
       )
     );
   } catch (error) {
