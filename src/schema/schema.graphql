@@ -23,7 +23,7 @@ type Product {
 }
 
 type Query {
-  user(id: ID!): User
+  user: User
   users: [User]!
   user_name(name: String!): User
 

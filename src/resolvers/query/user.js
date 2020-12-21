@@ -1,8 +1,8 @@
 import User from "../../models/user";
 
 const query = {
-  user: (parent, args, context, info) => {
-    return User.findById(args.id);
+  user: (parent, args, {userId}, info) => {
+    return User.findById(userId);
   },
   users: (parent, args, context, info) => {
     return User.find();
